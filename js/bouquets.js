@@ -4,7 +4,7 @@
 // and category / text filtering, with app state kept in one place.
 
 document.addEventListener('DOMContentLoaded', () => {
-  const API_URL = 'http://localhost:3000/bouquets';
+  const API_URL = 'https://my-json-server.typicode.com/srudnytsky/UMT-markup-practice_P1-Rudnytsky-Svyatoslav/tree/dz-2/bouquets';
 
   const listEl = document.querySelector('#bouquets-list');
   const statusEl = document.querySelector('#bouquets-status');
