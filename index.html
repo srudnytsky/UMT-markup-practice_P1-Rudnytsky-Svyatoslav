@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flora — Квіти, що говорять за тебе</title>
     <meta name="description" content="Доставка свіжих квіткових букетів. Красиві композиції на будь-яку подію.">
-    
+
     <!-- Google Fonts одним посиланням -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <!-- Modern Normalize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
-	
-	<!-- Swiper CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
@@ -23,7 +20,7 @@
     <!-- ==================== HEADER ==================== -->
     <header class="header">
         <div class="container header__container">
-            
+
             <!-- Логотип -->
             <a href="#" class="logo">
                 <img src="images/logo.svg" alt="Flora - квітковий магазин" width="120" height="48">
@@ -43,6 +40,7 @@
             <!-- Кнопка Explore Bouquets -->
             <a href="#bouquets" class="btn btn--primary desktop-btn">Explore Bouquets</a>
 
+            <!-- Бургер -->
             <button class="burger" aria-label="Відкрити меню" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -51,32 +49,27 @@
         </div>
 
         <!-- ==================== MOBILE MENU ==================== -->
-<div class="mobile-menu">
-    <div class="mobile-menu__content">
-        <div class="mobile-menu__logo">
-            <a href="#" class="logo">
-                <img src="images/logo.svg" alt="Flora" width="140" height="52">
-            </a>
-        </div>
+        <div class="mobile-menu">
+            <div class="mobile-menu__content">
+                <button class="mobile-menu__close" aria-label="Закрити меню">
+                    <svg width="28" height="28">
+                        <use href="images/icons.svg#X_close"></use>
+                    </svg>
+                </button>
 
-        <button class="mobile-menu__close" aria-label="Закрити меню">
-            <svg width="28" height="28">
-                <use href="images/icons.svg#X_close"></use>
-            </svg>
-        </button>
-        
-        <nav class="mobile-nav">
-            <ul class="mobile-nav__list">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#bestsellers">Bestsellers</a></li>
-                <li><a href="#bouquets">Bouquets</a></li>
-                <li><a href="#feedback">Feedback</a></li>
-                <li><a href="#contacts">Contacts</a></li>
-            </ul>
-        </nav>
-        <a href="#bouquets" class="btn btn--primary mobile-btn">Explore Bouquets</a>
-    </div>
-</div>
+                <nav class="mobile-nav">
+                    <ul class="mobile-nav__list">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#bestsellers">Bestsellers</a></li>
+                        <li><a href="#bouquets">Bouquets</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="#contacts">Contacts</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#bouquets" class="btn btn--primary mobile-btn">Explore Bouquets</a>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -86,7 +79,7 @@
                 <div class="hero__content">
                     <h1 class="hero__title">Brighten Your Day with Our Stunning Bouquets</h1>
                     <p class="hero__description">
-                        At Flora, we believe that every occasion deserves a beautiful bouquet. 
+                        At Flora, we believe that every occasion deserves a beautiful bouquet.
                         Our expertly crafted arrangements are designed to bring joy and elegance to your celebrations.
                     </p>
                     <a href="#bestsellers" class="btn btn--primary hero__btn">
@@ -101,17 +94,18 @@
             <div class="container">
                 <div class="passion__grid">
                     <div class="passion__content">
-						<img src = "images/frame.png">
-                        <h2 class="section-passion-title">Our Passion for Floral Artistry</h2>
+                        <h2 class="section-title">Our Passion for Floral Artistry</h2>
                         <p class="section-description">
-                            At Flora, we believe that every bouquet tells a story. Our team meticulously crafts 
-                            each arrangement, blending creativity with the freshest blooms to create stunning pieces 
+                            At Flora, we believe that every bouquet tells a story. Our team meticulously crafts
+                            each arrangement, blending creativity with the freshest blooms to create stunning pieces
                             for every occasion.
                         </p>
                     </div>
                     <div class="passion__image">
-                        <img src="images/elevated-view-female-florist-arranging-white-peony-flowers-shop Large.jpg" 
-                             alt="Флористка складає великий букет з білих півоній" 
+                        <img src="images/elevated-view-female-florist-arranging-white-peony-flowers-shop Large.jpg"
+                             srcset="images/elevated-view-female-florist-arranging-white-peony-flowers-shop Large.jpg 1x,
+                                     images/elevated-view-female-florist-arranging-white-peony-flowers-shop Large@2x.jpg 2x"
+                             alt="Флористка складає великий букет з білих півоній"
                              width="600" height="500">
                     </div>
                 </div>
@@ -119,17 +113,17 @@
         </section>
 
         <!-- ==================== TOP-SELLING BOUQUETS ==================== -->
-<section id="bestsellers" class="top-selling">
-    <div class="container">
-        <h2 class="section-top-selling-title">Top-Selling Bouquets</h2>
-        
-        <div class="swiper top-selling__slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="bouquet-card">
+        <section id="bestsellers" class="top-selling">
+            <div class="container">
+                <h2 class="section-title">Top-Selling Bouquets</h2>
+
+                <ul class="bouquets-grid top-selling__grid">
+                    <li class="bouquet-card">
                         <a href="#" class="bouquet-card__link">
                             <div class="bouquet-card__image">
-                                <img src="images/perfect-gift-wonderful-flowers-womens-day-tender-smiling-brunet-woman-holding-front-face-bouquet-spring-flowerspace-text.jpg" 
+                                <img src="images/perfect-gift-wonderful-flowers-womens-day-tender-smiling-brunet-woman-holding-front-face-bouquet-spring-flowerspace-text.jpg"
+                                     srcset="images/perfect-gift-wonderful-flowers-womens-day-tender-smiling-brunet-woman-holding-front-face-bouquet-spring-flowerspace-text.jpg 1x,
+                                             images/perfect-gift-wonderful-flowers-womens-day-tender-smiling-brunet-woman-holding-front-face-bouquet-spring-flowerspace-text@2x.jpg 2x"
                                      alt="Spring Elegance" width="400" height="340">
                             </div>
                             <div class="bouquet-card__info">
@@ -138,13 +132,13 @@
                                 <div class="bouquet-card__price">$35</div>
                             </div>
                         </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bouquet-card">
+                    </li>
+                    <li class="bouquet-card">
                         <a href="#" class="bouquet-card__link">
                             <div class="bouquet-card__image">
-                                <img src="images/bridal-arrangement-wedding-flowers-closeup-decoration-roses-flowers-ornamental-plants-closeup.jpg" 
+                                <img src="images/bridal-arrangement-wedding-flowers-closeup-decoration-roses-flowers-ornamental-plants-closeup.jpg"
+                                     srcset="images/bridal-arrangement-wedding-flowers-closeup-decoration-roses-flowers-ornamental-plants-closeup.jpg 1x,
+                                             images/bridal-arrangement-wedding-flowers-closeup-decoration-roses-flowers-ornamental-plants-closeup@2x.jpg 2x"
                                      alt="Berry Chic" width="400" height="340">
                             </div>
                             <div class="bouquet-card__info">
@@ -153,13 +147,13 @@
                                 <div class="bouquet-card__price">$40</div>
                             </div>
                         </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bouquet-card">
+                    </li>
+                    <li class="bouquet-card">
                         <a href="#" class="bouquet-card__link">
                             <div class="bouquet-card__image">
-                                <img src="images/mixed-flower-bouquet-wooden-table.jpg" 
+                                <img src="images/mixed-flower-bouquet-wooden-table.jpg"
+                                     srcset="images/mixed-flower-bouquet-wooden-table.jpg 1x,
+                                             images/mixed-flower-bouquet-wooden-table@2x.jpg 2x"
                                      alt="Lavender Dream" width="400" height="340">
                             </div>
                             <div class="bouquet-card__info">
@@ -168,190 +162,79 @@
                                 <div class="bouquet-card__price">$55</div>
                             </div>
                         </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ==================== ALL BOUQUETS (DYNAMIC) ==================== -->
+        <section id="bouquets" class="bouquets">
+            <div class="container">
+                <h2 class="section-title">Bouquets</h2>
+                <p class="section-subtitle">Explore our stunning selection of fresh flower bouquets.</p>
+
+                <!-- Filter controls -->
+                <div class="bouquets__filters">
+                    <div class="filter-field">
+                        <label for="bouquet-search" class="visually-hidden">Search bouquets</label>
+                        <input type="search" id="bouquet-search" name="search" class="filter-input"
+                               placeholder="Search bouquets…" autocomplete="off">
+                    </div>
+                    <div class="filter-field">
+                        <label for="bouquet-category" class="visually-hidden">Filter by category</label>
+                        <select id="bouquet-category" name="category" class="filter-select">
+                            <option value="all">All categories</option>
+                            <option value="romantic">Romantic</option>
+                            <option value="pastel">Pastel</option>
+                            <option value="bright">Bright</option>
+                            <option value="rustic">Rustic</option>
+                            <option value="elegant">Elegant</option>
+                        </select>
                     </div>
                 </div>
 
-            </div>
+                <!-- Dynamic list target: no static markup here, filled via JS -->
+                <ul class="bouquets-grid" id="bouquets-list" aria-live="polite"></ul>
 
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-</section>
-
-        <!-- ==================== ALL BOUQUETS ==================== -->
-        <section id="bouquets" class="bouquets">
-            <div class="container">
-                <h2 class="section-bouquets-title">Bouquets</h2>
-                <p class="section-subtitle">Explore our stunning selection of fresh flower bouquets.</p>
-                
-                <ul class="bouquets-grid">
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/side-view-rose-bouquet-with-wildflowers-pink-basket.jpg" 
-                                     alt="Peach Meadow" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Peach Meadow</h3>
-                                <p class="bouquet-card__desc">A soft and radiant arrangement of peach and blush roses with lush greenery in a straw basket — light and natural.</p>
-                                <div class="bouquet-card__price">$55</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/florist-makes-beautiful-bouquet-studio.jpg" 
-                                     alt="Blush Romance" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Blush Romance</h3>
-                                <p class="bouquet-card__desc">A premium bouquet of deep pink and ivory roses, complemented by silver eucalyptus — sophisticated and intimate.</p>
-                                <div class="bouquet-card__price">$34</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/big-basket-mixed-flowers-standing-table-with-christmas-cones.jpg" 
-                                     alt="Pastel Garden" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Pastel Garden</h3>
-                                <p class="bouquet-card__desc">A pastel-toned mix of spray roses and greenery in a woven basket — gentle, airy, and perfect for any occasion.</p>
-                                <div class="bouquet-card__price">$40</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/mixed-flower-composition-side-view.jpg" 
-                                     alt="Tulip Charm" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Tulip Charm</h3>
-                                <p class="bouquet-card__desc">A vivid bouquet of bright tulips and roses in a lavender box — cheerful and full of charm.</p>
-                                <div class="bouquet-card__price">$61</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/exotic-rustic-bunch-flowers-mixed-colors.jpg" 
-                                     alt="Berry Bloom" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Berry Bloom</h3>
-                                <p class="bouquet-card__desc">A lush mix of rich pink, purple, and cream blooms with textured greens — romantic and elegant.</p>
-                                <div class="bouquet-card__price">$32</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/basket-filled-with-assorted-colorful-flowers-notecard.jpg" 
-                                     alt="Sweet Whisper" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Sweet Whisper</h3>
-                                <p class="bouquet-card__desc">A charming spring bouquet with peonies, roses, and lilac-toned accents — fresh, lively, and expressive.</p>
-                                <div class="bouquet-card__price">$40</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/wild-flowers.jpg" 
-                                     alt="Field Joy" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Field Joy</h3>
-                                <p class="bouquet-card__desc">A rustic hand-tied bouquet of sunflowers, lisianthus, and daisies — perfect for brightening the day.</p>
-                                <div class="bouquet-card__price">$49</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="bouquet-card">
-                        <a href="#" class="bouquet-card__link">
-                            <div class="bouquet-card__image">
-                                <img src="images/close-up-bouquet-decorated-vintage-style-dark-background.jpg" 
-                                     alt="Soft Bloom" width="400" height="400">
-                            </div>
-                            <div class="bouquet-card__info">
-                                <h3 class="bouquet-card__title">Soft Bloom</h3>
-                                <p class="bouquet-card__desc">A delicate bouquet of pink carnations and roses wrapped in satin paper — soft, stylish, and versatile.</p>
-                                <div class="bouquet-card__price">$37</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                <p class="bouquets__status" id="bouquets-status" hidden></p>
 
                 <div class="text-center mt-3">
-                    <button type="button" class="btn btn--primary show-more">Show More</button>
+                    <button type="button" class="btn btn--primary load-more" id="load-more">Load More</button>
                 </div>
             </div>
         </section>
 
         <!-- ==================== TESTIMONIALS ==================== -->
-		<section id="feedback" class="testimonials">
-			<div class="container">
-				<h2 class="section-testimonials-title">What our clients says</h2>
-				
-				<div class="swiper testimonials__slider">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="testimonial-card">
-								<p class="testimonial__text">"Flora made my anniversary unforgettable with their beautiful arrangement!"</p>
-								<div class="testimonial__author"><strong>Emma T.</strong></div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="testimonial-card">
-								<p class="testimonial__text">"Absolutely stunning bouquet! It looked even better than the photo and arrived right on time."</p>
-								<div class="testimonial__author"><strong>Daniel R.</strong></div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="testimonial-card">
-								<p class="testimonial__text">"The service was exceptional, and the flowers were fresh!"</p>
-								<div class="testimonial__author"><strong>Olivia M.</strong></div>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="testimonials-controls">
-						<button class="swiper-button-prev testimonial-btn" aria-label="Попередній відгук">
-							<svg width="28" height="28">
-								<use href="images/icons.svg#arrow-left-alt"></use>
-							</svg>
-						</button>
-						
-						<button class="swiper-button-next testimonial-btn" aria-label="Наступний відгук">
-							<svg width="28" height="28">
-								<use href="images/icons.svg#arrow-right-alt"></use>
-							</svg>
-						</button>
-					</div>
-				</div>
-			</div>
-		</section>
+        <section id="feedback" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What our clients says</h2>
+                <div class="testimonials__grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">"Flora made my anniversary unforgettable with their beautiful arrangement!"</p>
+                        <div class="testimonial__author"><strong>Emma T.</strong></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">"Absolutely stunning bouquet! It looked even better than the photo and arrived right on time."</p>
+                        <div class="testimonial__author"><strong>Daniel R.</strong></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">"The service was exceptional, and the flowers were fresh!"</p>
+                        <div class="testimonial__author"><strong>Olivia M.</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- ==================== CONTACT ==================== -->
         <section id="contacts" class="contact">
             <div class="container">
                 <div class="contact__top">
                     <div class="contact__text">
-						<p class = "contact__connect" >Connect</p>
-                        <h2 class="section-contact-title">Get in Touch</h2>
+                        <h2 class="section-title">Get in Touch</h2>
                         <p class="contact__desc">
-                            We’re here to assist you with all your floral needs and inquiries.
+                            We're here to assist you with all your floral needs and inquiries.
                         </p>
+                        <button type="button" class="btn btn--primary" id="open-order-modal">Order a Bouquet</button>
                     </div>
                     <div class="contact__info">
                         <div class="contact__item">
@@ -374,11 +257,13 @@
                         </div>
                     </div>
                 </div>
-               	<div class="contact__image">
-                        <img src="images/photo-florist-holding-beautiful-flowers-flower-shop.jpg" 
-                             alt="Флористка в магазині Flora тримає великий букет" 
-                             width="1200" height="650">
-                    </div>
+                <div class="contact__image">
+                    <img src="images/photo-florist-holding-beautiful-flowers-flower-shop.jpg"
+                         srcset="images/photo-florist-holding-beautiful-flowers-flower-shop.jpg 1x,
+                                 images/photo-florist-holding-beautiful-flowers-flower-shop@2x.jpg 2x"
+                         alt="Флористка в магазині Flora тримає великий букет"
+                         width="1200" height="650">
+                </div>
             </div>
         </section>
     </main>
@@ -390,7 +275,7 @@
                 <a href="#" class="logo footer__logo">
                     <img src="images/logo.svg" alt="Flora" width="140" height="52">
                 </a>
-                
+
                 <nav class="footer__nav">
                     <ul class="footer__list">
                         <li><a href="#about">About Us</a></li>
@@ -400,7 +285,7 @@
                         <li><a href="#contacts">Contacts</a></li>
                     </ul>
                 </nav>
-                
+
                 <div class="footer__social">
                     <a href="#" aria-label="Facebook" class="social-link">
                         <svg width="28" height="28">
@@ -419,16 +304,73 @@
                     </a>
                 </div>
             </div>
-            
+
+            <!-- Newsletter subscribe form -->
+            <form class="footer__subscribe" id="subscribe-form" novalidate>
+                <h3 class="footer__subscribe-title">Subscribe for offers &amp; news</h3>
+                <div class="footer__subscribe-row">
+                    <label for="subscribe-email" class="visually-hidden">Email address</label>
+                    <input type="email" id="subscribe-email" name="email" class="footer__subscribe-input"
+                           placeholder="Your email address" required>
+                    <button type="submit" class="btn btn--primary footer__subscribe-btn">Subscribe</button>
+                </div>
+                <p class="footer__subscribe-msg" id="subscribe-msg" hidden></p>
+            </form>
+
             <div class="footer__bottom">
                 <p class="footer__copyright">&copy; 2025 Flora. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- ==================== ORDER MODAL ==================== -->
+    <div class="modal-backdrop" id="order-modal-backdrop">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+            <button type="button" class="modal__close" id="order-modal-close" aria-label="Close">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <line x1="2" y1="2" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="20" y1="2" x2="2" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <h3 class="modal__title" id="order-modal-title">Order a Bouquet</h3>
+            <p class="modal__subtitle" id="order-modal-subtitle">Tell us a bit about what you'd like, and we'll get back to you.</p>
+
+            <form class="modal__form" id="order-form" novalidate>
+                <div class="form-field">
+                    <label for="order-name">Full name</label>
+                    <input type="text" id="order-name" name="name" placeholder="Jane Doe" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="order-phone">Phone number</label>
+                    <input type="tel" id="order-phone" name="phone" placeholder="+1 (555) 123-4567" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="order-message">Message</label>
+                    <textarea id="order-message" name="message" rows="3" placeholder="Any preferences, colors, or occasion details…"></textarea>
+                </div>
+
+                <label class="custom-checkbox" for="order-agree">
+                    <input type="checkbox" id="order-agree" name="agree" class="custom-checkbox__input" required>
+                    <span class="custom-checkbox__box" aria-hidden="true">
+                        <svg class="custom-checkbox__icon" width="14" height="11" viewBox="0 0 14 11" fill="none">
+                            <path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="custom-checkbox__label">I agree to the license agreement and privacy policy</span>
+                </label>
+
+                <button type="submit" class="btn btn--primary modal__submit">Send Request</button>
+                <p class="modal__form-msg" id="order-form-msg" hidden></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
     <script src="js/menu.js"></script>
-    <script src="js/slider.js"></script>
-	<!-- Swiper JS -->
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/bouquets.js"></script>
 </body>
 </html>
