@@ -1,7 +1,8 @@
 // bouquets.js
-// Fetches bouquets from a mock API (json-server) via axios and renders
+// Loads bouquets from a mock API (json-server) via axios and renders
 // them dynamically into #bouquets-list. Supports "Load more" pagination
-// and category / text filtering, with app state kept in one place.
+// and category / text filtering. Clicking a card opens the product modal
+// (handled in modal.js via the [data-bouquet-card] delegation).
 
 document.addEventListener('DOMContentLoaded', () => {
   const API_URL = 'https://my-json-server.typicode.com/srudnytsky/UMT-markup-practice_P1-Rudnytsky-Svyatoslav/tree/dz-2/bouquets';
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!listEl) return; // section not present on this page
 
-  // Single source of truth for the app's current state.
   const state = {
     page: 1,
     limit: 6,
@@ -24,25 +24,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let debounceTimer = null;
 
+  function escapeAttr(str) {
+    return String(str).replace(/"/g, '&quot;');
+  }
+
   function cardTemplate(item) {
-    // Content images use srcset for x1/x2. Replace the "@2x" filenames
-    // with real exported retina assets in your images/ folder.
+    const imagePath = `images/${item.image}`;
+    const image2x = imagePath.replace(/\.(jpg|jpeg|png)$/i, '@2x.$1');
+
     return `
-      <li class="bouquet-card" data-id="${item.id}">
+      <li class="bouquet-card" data-bouquet-card tabindex="0" role="button"
+          data-id="${item.id}"
+          data-title="${escapeAttr(item.title)}"
+          data-price="${item.price}"
+          data-desc="${escapeAttr(item.desc)}"
+          data-image="${imagePath}">
         <div class="bouquet-card__image">
           <img
-            src="images/${item.image}"
-            srcset="images/${item.image} 1x, images/${item.image.replace(/\.(jpg|jpeg|png)$/i, '@2x.$1')} 2x"
-            alt="${item.alt || item.title}"
+            src="${imagePath}"
+            srcset="${imagePath} 1x, ${image2x} 2x"
+            alt="${escapeAttr(item.alt || item.title)}"
             width="400" height="400" loading="lazy">
         </div>
         <div class="bouquet-card__info">
           <h3 class="bouquet-card__title">${item.title}</h3>
           <p class="bouquet-card__desc">${item.desc}</p>
           <div class="bouquet-card__price">$${item.price}</div>
-          <button type="button" class="btn btn--primary bouquet-card__order-btn" data-order="${item.title}">
-            Order
-          </button>
         </div>
       </li>
     `;
@@ -85,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Single batch insert per request — not one insertAdjacentHTML per item.
       const markup = items.map(cardTemplate).join('');
       listEl.insertAdjacentHTML('beforeend', markup);
 
@@ -133,21 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 400);
     });
   }
-
-  // Open the order modal from a card, pre-filling the subtitle with the bouquet name.
-  listEl.addEventListener('click', (event) => {
-    const orderBtn = event.target.closest('[data-order]');
-    if (!orderBtn) return;
-
-    const title = orderBtn.getAttribute('data-order');
-    const subtitle = document.querySelector('#order-modal-subtitle');
-    if (subtitle) {
-      subtitle.textContent = `You're requesting: "${title}". Add any extra details below.`;
-    }
-    if (typeof window.openOrderModal === 'function') {
-      window.openOrderModal();
-    }
-  });
 
   // Initial load
   fetchBouquets({ isReset: true });
