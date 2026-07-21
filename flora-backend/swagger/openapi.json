@@ -1,0 +1,224 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Flora Bouquets API",
+    "version": "1.0.0",
+    "description": "REST API for managing the Flora bouquets collection."
+  },
+  "servers": [
+    { "url": "http://localhost:3000", "description": "Local server" },
+    { "url": "https://umt-markup-practice-p1-rudnytsky.onrender.com", "description": "Production (Render)" }
+  ],
+  "tags": [{ "name": "bouquets", "description": "Bouquets endpoints" }],
+  "paths": {
+    "/api/bouquets": {
+      "get": {
+        "tags": ["bouquets"],
+        "summary": "Get all bouquets",
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer" }, "description": "Page number (optional, used together with limit)" },
+          { "name": "limit", "in": "query", "schema": { "type": "integer" }, "description": "Items per page (optional)" },
+          { "name": "category", "in": "query", "schema": { "type": "string" }, "description": "Filter by category (optional)" },
+          { "name": "search", "in": "query", "schema": { "type": "string" }, "description": "Full-text search in title/description (optional)" }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of bouquets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Bouquet" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["bouquets"],
+        "summary": "Create a bouquet",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BouquetCreate" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Bouquet" } }
+            }
+          },
+          "400": { "description": "Validation error" }
+        }
+      }
+    },
+    "/api/bouquets/{id}": {
+      "get": {
+        "tags": ["bouquets"],
+        "summary": "Get a bouquet by id",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bouquet found",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Bouquet" } }
+            }
+          },
+          "404": { "description": "Not found" }
+        }
+      },
+      "put": {
+        "tags": ["bouquets"],
+        "summary": "Update a bouquet by id",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BouquetUpdate" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Bouquet" } }
+            }
+          },
+          "400": { "description": "Empty body or validation error" },
+          "404": { "description": "Not found" }
+        }
+      },
+      "delete": {
+        "tags": ["bouquets"],
+        "summary": "Delete a bouquet by id",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Deleted successfully" },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/api/bouquets/{id}/favorite": {
+      "patch": {
+        "tags": ["bouquets"],
+        "summary": "Update the favorite status of a bouquet",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["favorite"],
+                "properties": { "favorite": { "type": "boolean" } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Bouquet" } }
+            }
+          },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/api/bouquets/{id}/photo": {
+      "patch": {
+        "tags": ["bouquets"],
+        "summary": "Upload or replace a bouquet's photo",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "photo": { "type": "string", "format": "binary" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Photo updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "photoURL": { "type": "string", "example": "/photos/1_1700000000000.jpg" } }
+                }
+              }
+            }
+          },
+          "400": { "description": "Missing or invalid file" },
+          "404": { "description": "Not found" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Bouquet": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 1 },
+          "title": { "type": "string", "example": "Peach Meadow" },
+          "description": { "type": "string", "example": "A soft and radiant arrangement of peach and blush roses." },
+          "price": { "type": "number", "example": 55 },
+          "category": { "type": "string", "example": "pastel" },
+          "photoURL": { "type": "string", "example": "/photos/1_1700000000000.jpg" },
+          "favorite": { "type": "boolean", "example": false },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "BouquetCreate": {
+        "type": "object",
+        "required": ["title", "description", "price"],
+        "properties": {
+          "title": { "type": "string", "example": "Peach Meadow" },
+          "description": { "type": "string", "example": "A soft and radiant arrangement of peach and blush roses." },
+          "price": { "type": "number", "example": 55 },
+          "category": { "type": "string", "example": "pastel" },
+          "photoURL": { "type": "string", "example": "https://example.com/photo.jpg" },
+          "favorite": { "type": "boolean", "example": false }
+        }
+      },
+      "BouquetUpdate": {
+        "type": "object",
+        "description": "All fields optional; at least one is required.",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "price": { "type": "number" },
+          "category": { "type": "string" },
+          "photoURL": { "type": "string" },
+          "favorite": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
